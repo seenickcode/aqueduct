@@ -175,8 +175,6 @@ abstract class ApplicationChannel implements APIComponentDocumenter {
 
   @override
   void documentComponents(APIDocumentContext registry) {
-    entryPoint.documentComponents(registry);
-
     final type = reflect(this).type;
     final documenter = reflectType(APIComponentDocumenter);
     type.declarations.values.forEach((member) {
@@ -187,6 +185,8 @@ abstract class ApplicationChannel implements APIComponentDocumenter {
         }
       }
     });
+
+    entryPoint.documentComponents(registry);
   }
 
   /// Returns the subclass of [ApplicationChannel] found in an application library.
